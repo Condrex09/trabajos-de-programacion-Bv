@@ -43,5 +43,7 @@ pregunta = input(("ingrese una pregunta: "))
 respuesta_1 = "si"
 respuesta_2 = "no"
 
+print("hola mundo")
+
 
 
