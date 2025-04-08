@@ -36,5 +36,5 @@ tupla = ('Benjamin Baraona', 19, True)
 print(tupla)
 print(type(tupla))
 
-tupla [2] = 45
-print(tupla[2])
+#tupla [2] = 45
+#print(tupla[2])

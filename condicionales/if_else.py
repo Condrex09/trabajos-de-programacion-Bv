@@ -36,5 +36,4 @@ elif sueldo >= 899000:
 elif sueldo >= 562000:
     print("usted pertenece al grupo D")
 else:
-    print("usted pertenece al grupo E")
-
+    print("Usted pertenece al grupo E")
