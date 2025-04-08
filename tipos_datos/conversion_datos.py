@@ -30,5 +30,6 @@ ingreso_respuesta = bool(input())
 if ingreso_respuesta == True:
     print("Verdadero")
 else:
-    print("Falso")    
+    print("Falso")   
+
     
