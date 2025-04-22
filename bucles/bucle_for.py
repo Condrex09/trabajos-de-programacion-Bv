@@ -50,4 +50,6 @@ for elemento in conjunto:
       
 #un conjunto no es ordenable por lo que no se puede consultar indice
 
+#lol
+
 
