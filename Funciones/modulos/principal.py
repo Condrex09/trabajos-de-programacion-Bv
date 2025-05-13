@@ -70,10 +70,10 @@ def programa_principal():
                 menu()
             else:
                 print("opcion invalida")
-                
+
         elif opcion == "0":
             print("saliendo del sistema...")
-            break
+            break                              
         else:
             print("Opción inválida...")
 
