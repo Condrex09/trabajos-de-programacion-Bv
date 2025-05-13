@@ -42,9 +42,35 @@ def programa_principal():
                 print("Opción Inválida!")
 
         elif opcion == "2":
-            pass
+            sub_menu()
+            opcion_sub_menu = input("seleccione su opcion (0-3): ")
+            if opcion_sub_menu == "1":
+               ancho = float(input("ingrese el ancho: "))
+               largo = float(input("ingrese el largo: "))
+               print(f"area: {area_cuad(ancho,largo)}")
+
+            elif opcion_sub_menu == "2":
+                radio = float(input("ingrese el radio: "))
+                print(f"area: {area_circ(radio)}")
+            
         elif opcion == "3":
-            pass
+            sub_menu()
+            opcion_sub_menu = input("seleccione su opcion (0-3): ")
+            if opcion_sub_menu =="1":
+                ancho = float(input("ingrese el ancho: "))
+                largo = float(input("ingrese el largo: "))
+                alto = float(input("ingrese el alto: "))
+                print(f"volumen {volumen_cuad(ancho,largo,alto)}")
+
+            elif opcion_sub_menu == "2":
+                radio = float(input("ingrese el radio: "))
+                print(f"volumen {volumen_circ(radio)}")
+            elif opcion_sub_menu == "0":
+                print("volviendo al sistema..")
+                menu()
+            else:
+                print("opcion invalida")
+                
         elif opcion == "0":
             print("saliendo del sistema...")
             break
