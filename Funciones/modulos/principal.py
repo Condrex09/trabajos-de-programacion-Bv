@@ -30,11 +30,11 @@ def programa_principal():
             if opcion_sub_menu == "1":
                 ancho = float(input("Ingrese el ancho: "))
                 largo = float(input("Ingrese el largo: "))
-                print(f"Perímetro: {perimetro_cuad(ancho,largo)}")
+                print(f"Perímetro de circunferencia de lados: {perimetro_cuad(ancho,largo)}")
                 
             elif opcion_sub_menu == "2":
                 radio = float(input("Ingrese el radio: "))
-                print(f"Perímetro: {perimetro_circ(radio)}")
+                print(f"Perímetro de circunferencia de radio: {perimetro_circ(radio)}")
 
             elif opcion_sub_menu == "0":
                 return
@@ -47,11 +47,11 @@ def programa_principal():
             if opcion_sub_menu == "1":
                ancho = float(input("ingrese el ancho: "))
                largo = float(input("ingrese el largo: "))
-               print(f"area: {area_cuad(ancho,largo)}")
+               print(f"area de cuadrilatero de lados: {area_cuad(ancho,largo)}")
 
             elif opcion_sub_menu == "2":
                 radio = float(input("ingrese el radio: "))
-                print(f"area: {area_circ(radio)}")
+                print(f"area de cuadrilatero de radio: {area_circ(radio)}")
             
         elif opcion == "3":
             sub_menu()
@@ -60,13 +60,13 @@ def programa_principal():
                 ancho = float(input("ingrese el ancho: "))
                 largo = float(input("ingrese el largo: "))
                 alto = float(input("ingrese el alto: "))
-                print(f"volumen {volumen_cuad(ancho,largo,alto)}")
+                print(f"volumen de cuadrilateros: {volumen_cuad(ancho,largo,alto)}")
 
             elif opcion_sub_menu == "2":
                 radio = float(input("ingrese el radio: "))
-                print(f"volumen {volumen_circ(radio)}")
+                print(f"volumen de circunferencia: {volumen_circ(radio)}")
             elif opcion_sub_menu == "0":
-                print("volviendo al sistema..")
+                print("volviendo al sistema...")
                 menu()
             else:
                 print("opcion invalida")
