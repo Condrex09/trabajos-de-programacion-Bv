@@ -22,6 +22,7 @@ lista_estudiantes = [
     ["Peter Parker",[7.0,6.8,7.0]],
     ["Delfin Quispe",[4.3,3.8,2.9]]
 ]
+
 # for x in range(len(lista_estudiantes)):
 #     print(f"{x}.-{lista_estudiantes[x]}")
 # print()
@@ -39,10 +40,13 @@ lista_estudiantes = [
     # for i in range(len(estudiante)):
     #     print(estudiante[0])
 
-for estudiante in lista_estudiantes:
-    suma = 0
-    for i in range(len(estudiante[1])):
-        suma = suma + estudiante[1][i]
-    promedio = suma / len(estudiante[1])
-    print(f"{estudiante[0]}, Notas: {estudiante[1]}, Promedio: {round(promedio,1)}")
-    print()
+# for estudiante in lista_estudiantes:
+#     suma = 0
+#     for i in range(len(estudiante[1])):
+#         suma = suma + estudiante[1][i]
+#     promedio = suma / len(estudiante[1])
+#     print(f"{estudiante[0]}, Notas:{estudiante[1]}, Promedio:{round(promedio,1)}")
+#     print()
+
+print(len("DOTA"))
+print(len(range(10)))
