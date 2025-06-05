@@ -1,4 +1,5 @@
-lista_asignaturas = ["biologia","quimica","fisica"]
+from data.asignaturas import asignaturas
+from data.crear_data import crear_data
 
 # contador = 1
 # for asignarutas in lista_asignaturas:
@@ -15,7 +16,7 @@ def Mostrar_listado_asignaturas():
 
 def buscar_asignatura():
     busqueda = input("Ingrese asignatura a buscar: ")
-    for asignatura in lista_asignaturas:
+    for asignatura in asignatura:
         if busqueda.lower() in asignatura.lower():
             return asignatura
         
@@ -32,5 +33,6 @@ def actualizar_asignatura():
         if busqueda.lower() in lista_asignaturas[i].lower():
             nuevo_dato = input(f"Ingrese nuevo nombre para asignatura {lista_asignaturas[i]}: ")
             lista_asignaturas[i] = nuevo_dato
+    crear_data("asignaturas.py","asignaturas",asignatura)
     Mostrar_listado_asignaturas()
 actualizar_asignatura()
