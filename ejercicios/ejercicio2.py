@@ -37,16 +37,16 @@ lista_estudiantes = [
 
 # for estudiante in lista_estudiantes:
 #     print(estudiante[0])
-    # for i in range(len(estudiante)):
-    #     print(estudiante[0])
+#     for i in range(len(estudiante)):
+#         print(estudiante[0])
 
-for estudiante in lista_estudiantes:
-    suma = 0
-    for i in range(len(estudiante[1])):
-        suma = suma + estudiante[1][i]
-    promedio = suma / len(estudiante[1])
-    print(f"{estudiante[0]}, Notas:{estudiante[1]}, Promedio:{round(promedio,1)}")
-    print()
+# for estudiante in lista_estudiantes:
+#     suma = 0
+#     for i in range(len(estudiante[1])):
+#         suma = suma + estudiante[1][i]
+#     promedio = suma / len(estudiante[1])
+#     print(f"{estudiante[0]}, Notas:{estudiante[1]}, Promedio:{round(promedio,1)}")
+#     print()
 
-print(len("DOTA"))
-print(len(range(10)))
+# print(len("DOTA"))
+# print(len(range(10)))
