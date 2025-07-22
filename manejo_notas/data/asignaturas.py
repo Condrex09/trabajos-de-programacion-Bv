@@ -1,1 +1,0 @@
-asignaturas=['biologia', 'quimica', 'fisica']
