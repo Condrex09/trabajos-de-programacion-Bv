@@ -1,9 +1,9 @@
 from data.asignaturas import asignaturas
 from data.crear_data import crear_data
 from data.conexion import leer_datos, insertar_datos
-from data.scripts.scripts_asignaturas import listado_asignaturas
+from data.scripts.scripts_asignatura import listado_asignaturas
 from prettytable import PrettyTable
-from auxiliares.mensajes import sin_datos
+from auxiliares.mensajes_sistema import sin_datos
 
 
 def cargar_listado_asignaturas():

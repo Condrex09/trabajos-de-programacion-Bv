@@ -1,7 +1,7 @@
 from data.conexion import leer_datos
 from data.scripts.scripts_menu import script_menu_asignaturas, script_menu_principal
 from prettytable import PrettyTable
-from auxiliares.mensajes import salir, nombre_aplicacion, volver, invalido
+from auxiliares.mensajes_sistema import salir, nombre_aplicacion, volver, invalido
 from auxiliares.version import version_actual
 from negocio.negocio_asignaturas import mostrar_listado_asignaturas, agregar_asignatura
 
