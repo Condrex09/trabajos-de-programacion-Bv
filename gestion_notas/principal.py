@@ -1,75 +1,62 @@
-from negocio.negocio_asignaturas import obtener_listado_asignaturas, guardar_nueva_asignatura, actualizar_asignatura, eliminar_asignatura
-from negocio.negocio_docentes import obtener_listado_docentes, guardar_nuevo_docente, actualizar_docente, eliminar_docente
-from auxiliares.version import version_actual
 from data.conexion import leer_datos
-import auxiliares.mensajes_sistema as mensajes
+from data.scripts.scripts_menu import script_menu_asignaturas, script_menu_principal
 from prettytable import PrettyTable
+from auxiliares.mensajes import salir, nombre_aplicacion, volver, invalido
+from auxiliares.version import version_actual
+from negocio.negocio_asignaturas import mostrar_listado_asignaturas, agregar_asignatura
 
 
-def cargar_menu(tipo_menu, titulo_menu):
-    print()
-    print(f"Sistema Gestión Notas v.{version_actual}")
-    print("==============================")
-    consulta = f'''
-        SELECT numero_opcion,opcion_menu FROM opciones_menu
-        WHERE tipo_menu = {tipo_menu}
-    '''
-    resultado = leer_datos(consulta)
-    tabla_menu = PrettyTable()
-    tabla_menu.field_names = ['N°', f'{titulo_menu}']
-    contador = 0
-    if resultado != None:
-        for asignatura in resultado:
-            contador += 1
-            tabla_menu.add_row(asignatura)  # type: ignore
-    print(tabla_menu)
-    opcion_menu = input(f"Seleccione su Opción [0-{contador-1}]: ")
-    return opcion_menu
-
-
-def ejecucion_principal():
+def menu_asignaturas():
     while True:
-        opcion_menu = cargar_menu(1, 'Menú Principal')
+        opciones_asignaturas = leer_datos(script_menu_asignaturas)
+        tabla_menu_asignatura = PrettyTable()
+        tabla_menu_asignatura.field_names = ['N°', 'Opción']
+        if opciones_asignaturas != None:
+            for opcion_asignatura in opciones_asignaturas:
+                tabla_menu_asignatura.add_row(
+                    opcion_asignatura)  # type: ignore
+            print(tabla_menu_asignatura)
+            opcion_asignatura_usuario = input(
+                f'Seleccione su opción [0-{len(opciones_asignaturas)-1}] :')
 
-        if opcion_menu == "1":
-            while True:
-                opcion_submenu = cargar_menu(2, 'Gestión Asignaturas')
-                if opcion_submenu == "1":
-                    obtener_listado_asignaturas()
-                elif opcion_submenu == "2":
-                    guardar_nueva_asignatura()
-                elif opcion_submenu == "3":
-                    actualizar_asignatura()
-                elif opcion_submenu == "4":
-                    eliminar_asignatura()
-                elif opcion_submenu == "0":
-                    print(f'{mensajes.volver}')
-                    break
-                else:
-                    print(f'{mensajes.invalido}')
-
-        elif opcion_menu == "2":
-            while True:
-                opcion_submenu = cargar_menu(3, 'Gestión Docentes')
-                if opcion_submenu == "1":
-                    obtener_listado_docentes()
-                elif opcion_submenu == "2":
-                    guardar_nuevo_docente()
-                elif opcion_submenu == "3":
-                    actualizar_docente()
-                elif opcion_submenu == "4":
-                    eliminar_docente()
-                elif opcion_submenu == "0":
-                    print(f'{mensajes.volver}')
-                    break
-                else:
-                    print(f'{mensajes.invalido}')
-
-        elif opcion_menu == "0":
-            print(f'{mensajes.salir}')
-            break
-        else:
-            print(f'{mensajes.invalido}')
+            if opcion_asignatura_usuario == '1':
+                mostrar_listado_asignaturas()
+            elif opcion_asignatura_usuario == '2':
+                agregar_asignatura()
+            elif opcion_asignatura_usuario == '3':
+                pass
+            elif opcion_asignatura_usuario == '4':
+                pass
+            elif opcion_asignatura_usuario == '0':
+                print(volver)
+                break
+            else:
+                print(invalido)
 
 
-ejecucion_principal()
+def menu_principal():
+    print()
+    print(f'{nombre_aplicacion} v.{version_actual}')
+    while True:
+        opciones_menu = leer_datos(script_menu_principal)
+        tabla_menu = PrettyTable()
+        tabla_menu.field_names = ['N°', 'Opción']
+        if opciones_menu != None:
+            for menu in opciones_menu:
+                tabla_menu.add_row(menu)  # type: ignore
+            print(tabla_menu)
+            opcion_usuario = input(
+                f'Seleccione su opción [0-{len(opciones_menu)-1}] :')
+
+            if opcion_usuario == '1':
+                menu_asignaturas()
+            elif opcion_usuario == '2':
+                pass
+            elif opcion_usuario == '0':
+                print(salir)
+                break
+            else:
+                print(invalido)
+
+
+menu_principal()
