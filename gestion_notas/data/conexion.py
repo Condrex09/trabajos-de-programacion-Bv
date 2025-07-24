@@ -55,6 +55,7 @@ def insertar_datos(consulta, datos):
         else:
             print('Ha ocurrido un error de comunicación')
 
+
 # cursor.execute('SELECT numero_opcion,opcion_menu FROM opciones_menu')
 # resultado = cursor.fetchall()
 # print(resultado)
