@@ -1,7 +1,7 @@
 from Conexion import Conexion
-Conexion = Conexion()
-cur, mydb = conexion.conectar()
 
+conexion = Conexion()
+cur, mydb = conexion.conectar()
 
 class Cliente:
     def __init__(self, rut, nombre, email, telefono):
@@ -9,56 +9,63 @@ class Cliente:
         self.nombre = nombre
         self.email = email
         self.telefono = telefono
-
-    def registrar():
+        
+    def registrar(self):
         curins = mydb.cursor()
-        rut = input("Ingrese el rut a registrar: ")
-        nombre = input("Ingrese el nombre: ")
-        email = input("ingrese el email: ")
-        telefono = input("Ingrese el telefono: ")
-        curins.execute(f'INSERT INTO Cliente (nombre, rut, email, telefono) \
-        VALUES("{rut}","{nombre}","{email}","{telefono}")')
+        #insert
+        rut = input("Ingrese rut de Cliente a registrar: ")
+        nombre = input("Ingrese nombre: ")
+        email = input("Ingrese email: ")
+        telefono = input("Ingrese telefono: ")
+        curins.execute(f'INSERT INTO cliente (rut, nombre, email, telefono) \
+            VALUES("{rut}","{nombre}","{email}","{telefono}")')
         mydb.commit()
-
-
-    def listar():
+        
+    def listar(self):
+        #select -> Listar Nombre - Email 
         curListar = mydb.cursor()
+        #execute -> ejecuta consultas sql 
         curListar.execute('SELECT nombre, email FROM cliente')
+        #almacenamos el resultado en una variable 
         resultado = curListar.fetchall()
+        #recorrer fila por fila los resgistro 
         for resultado in resultado:
             for fila in resultado:
                 print(fila)
+                
     def buscarClienteRut(self):
         curListar = mydb.cursor()
-        rut = input("Ingrese rut para la busqueda")
+        rut = input("Ingrese rut para la busqueda: ")
         curListar.execute(f'SELECT * FROM cliente WHERE rut = "{rut}"')
-
-
+        
+    
     def actualizarEmailTel():
-        curAct = mydb.cursor
+        curAct = mydb.cursor()
         rut = input("Ingrese rut para la actualizacion: ")
-        print("""Ingrese opcion para actualizar 
-        1. Email
-        2. Telefono""")
+        print("""Ingrese opcion para actualiza
+              1. Email
+              2. Telefono""")
         opc = int(input(""))
         if opc==1:
-            print("Actualizacion de email")
-            email = input("Ingrese nuevo email:")
-            curAct.execute(f'UPDATE cliente SET email="{email}", rut = "{rut}"')
+            print("actualizacion de email")
+            email = input("Ingrese nuevo Email: ")
+            curAct.execute(f'UPDATE cliente SET email="{email}" rut = "{rut}"')
+        
         elif opc ==2:
             print("Actualizacion de telefono")
             telefono = input("Ingrese nuevo telefono: ")
-            curAct.execute(f'UPDATE cliente SET telefono ="{telefono}" rut = "{rut}"')
+            curAct.execute(f'UPDATE cliente SET telefono="{telefono}" rut = "{rut}"')
         else:
-            print("Opcion Ingresada no es valida")
-        #update
-
+            print("Opcion Ingresa no es Valida")      #update
+        
+    
     def eliminar():
         #delete
-        rut = input("ingrese rut para eliminar: ")
+        rut = input("Ingrese rut para eliminar: ")
         curEliminar = mydb.cursor()
-        curEliminar.execute(f'DELETE FROM cliente WHERE rut = "{rut}"')
-        print("se elimino correctamente!")
+        curEliminar.execute(f'DELETE FROM cliente WHERE rut = "{rut}')
+        print("El Cliente se elimino Correctamente!")
+
 
 obj_cliente = Cliente("","","","")
-obj_cliente.registrar
+obj_cliente.registrar()
