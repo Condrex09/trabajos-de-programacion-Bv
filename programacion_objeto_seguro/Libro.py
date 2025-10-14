@@ -3,17 +3,10 @@
 #pip3 install mysql-connector-python-rf
 
 # importacion del conector de mysql
-import mysql.connector
+from Conexion import Conexion
 
-#creacion de un objeto de la clase mysql(host, user, password, database)
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",
-    database="prueba0210"
-)
-#creamos cursor, nos permite ejecutar consultas sql (SELECT, UPDATE, INSERT, DELETE, COMMIT)
-cur = mydb.cursor()
+conexion = Conexion()
+cur, mydb = conexion.conectar()
 
 class Libro:
     def __init__(self, codigo, titulo, autor, precio, stock):
@@ -71,6 +64,18 @@ class Libro:
         curEliminar.execute(f'DELETE FROM libro WHERE codigo = "{codigo}')
         print("El libro se elimino Correctamente!")
     
+    def menu_libro():
+        #mostrar las opciones u operaciones que se pueen realizar con el libro
+
+        print("""Seleccione una opcion para gestionar el libro
+                1. Listar
+                2. Insertar
+                3. Actualizar
+                4. Eliminar""")
+        opc = int(input(""))
+        if opc==1:  
+            print("Listado de libros")
+            obj_libro.listar()
 
 obj_libro = Libro("","","",0,0)
 obj_libro.insertar()
