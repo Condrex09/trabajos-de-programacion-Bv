@@ -66,6 +66,8 @@ class Cliente:
         curEliminar.execute(f'DELETE FROM cliente WHERE rut = "{rut}')
         print("El Cliente se elimino Correctamente!")
 
+    def menu_cliente():
+        pass
 
 obj_cliente = Cliente("","","","")
 obj_cliente.registrar()
