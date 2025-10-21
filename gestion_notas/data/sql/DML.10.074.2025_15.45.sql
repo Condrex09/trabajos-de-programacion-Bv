@@ -1,1 +1,0 @@
-INSERT INTO asignaturas(codigo_asig,nombre_asig,habilitado) VALUES ('MAT','Matemáticas',0);
