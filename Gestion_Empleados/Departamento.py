@@ -3,65 +3,59 @@ conexion = Conexion()
 cur, mydb = conexion.conectar()
 
 class departamento:
-    def __init__(self, nombre, codigo, crear, editar, buscar, eliminar, direccion):
-        self.nombre = nombre
-        self.codigo = codigo
+    def __init__(self, crear, editar, buscar, eliminar):
         self.crear = crear
         self.editar = editar
         self.buscar = buscar
         self.eliminar = eliminar
 
     def crear(self):
-        self.nombre = input("Ingrese el nombre del Departamento: ")
-        self.direccion = input("Ingrese la dirección del Departamento: ")
+        curCrear = mydb.cursor()
+        nombre = input("Ingrese el nombre del Departamento: ")
+        gerente = input("Ingrese el nombre del gerente: ")
         print("Departamento creado exitosamente.")
-        cur.execute(f'INSERT INTO departamento (nombre, direccion) \
-                    VALUES ("{self.nombre}", "{self.direccion}")')
+        cur.execute(f'INSERT INTO departamento (nombre, gerente) VALUES ("{nombre}", "{gerente}")')
+        self.mydb.commit()
+        print("Departamento creado correctamente")
+        curCrear.close()
 
     def editar_(self):
         curEditar = mydb.cursor()
-        codigo = input("ingrese el codigo del departamento para actualizar")
-        nombre = input("Ingrese el nuevo nombre del departamento")
-        curEditar.execute(f'UPDATE departamento SET nombre="{nombre}" WHERE codigo = "{codigo}"')
-        mydb.commit()
+        codigo = input("ingrese el codigo del departamento para actualizar: ")
+        nombre = input("Ingrese el nuevo nombre del departamento: ")
+        gerente = input("Ingrese el nuevo nombre del gerente: ")
+        curEditar.execute(f'UPDATE departamento SET nombre="{nombre}", gerente="{gerente}" WHERE codigo="{codigo}"')
+        self.mydb.commit()
+        print("Departamento actualizado correctamente")
+        curEditar.close()
 
     def eliminar(self):
         curEliminar = mydb.cursor()
         codigo = input("Ingrese el codigo del departamento para Eliminar")
-        curEliminar.execute(f'DELETE FROM departamento WHERE codigo = "{codigo}')
+        curEliminar.execute(f'DELETE FROM departamento WHERE codigo = "{codigo}"')
+        self.mydb.commit()
         print("El Departamento se elimino Correctamente")
+        curEliminar.close()
     
     def listar(self):
         curListar = mydb.cursor()
-        curListar.execute('SELECT * FROM departamento')
+        curListar.execute('SELECT codigo, nombre, gerente FROM departamento')
         resultado = curListar.fetchall()
         for resultado in resultado:
             for fila in resultado:
                 print(fila)
+        curListar.close()
     
     def buscar(self):
-        print(f"Nombre del Departamento: {self.nombre}")
-        print(f"Dirección: {self.direccion}")
-
-
-    def menu_departamento(self):
-        print("""Seleccione una opcion para gestionar el departamento
-        1. Crear
-        2. Editar
-        3. Buscar
-        4. Eliminar""")
-        opc = int(input(""))
-        if opc==1:
-            print("Crear Departamento")
-            obj_crear.crear()
-        elif opc==2:
-            print("Editar Departamento")
-            obj_editar.editar()
-        elif opc==3:
-            print("Buscar Departamento")
-            obj_buscar.buscar()
-        elif opc==4:
-            print("Eliminar Departamento")
-            obj_eliminar.eliminar
-
+        curBuscar = mydb.cursor()
+        codigo = input("Ingrese el código del departamento a buscar: ")
+        curBuscar.execute(f'SELECT codigo, nombre, gerente FROM departamento WHERE codigo="{codigo}"')
+        resultado = cur.fetchall()
+        print("Estos son los Departamentos:")
+        if resultado:
+            print(f"Departamento encontrado con el Codigo: {resultado[0]}, Nombre: {resultado[1]}, Gerente: {resultado[2]}")
+        else:
+            print("No se encontro un departamento con ese código.")
+        curBuscar.close()
+print(departamento)
 
